@@ -1,56 +1,56 @@
 package com.example.mobapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class BasicActivity extends AppCompatActivity {
 
-    private Button trueButton;
-    private Button falseButton;
-    private Button aboutButton;
-    private TextView aboutTextView;
+    private Button infoButton;
+    private Button settingsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.basic_activity);
 
-        trueButton = (Button) findViewById(R.id.trueButton);
-        falseButton = (Button) findViewById(R.id.falseButton);
-        aboutButton = (Button) findViewById(R.id.aboutButton);
-        aboutTextView = (TextView) findViewById(R.id.aboutTextView);
+        infoButton = (Button) findViewById(R.id.info_button);
+        settingsButton = (Button) findViewById(R.id.settings_button);
 
-        aboutTextView.setEnabled(false);
-
-        trueButton.setOnClickListener(new View.OnClickListener() {
+        infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                ShowInfoFragment();
             }
         });
 
-        falseButton.setOnClickListener(new View.OnClickListener() {
+        settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-            }
-        });
-
-        aboutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ShowAboutTextView(!aboutTextView.isEnabled());
+                ShowSettingsFragment();
             }
         });
     }
 
-    private void ShowAboutTextView(Boolean show)
+    private void ShowInfoFragment()
     {
-        aboutTextView.setEnabled(show);
+        InfoFragment fragment= new InfoFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.activity, fragment);
+        fragmentTransaction.commit();
+    }
+
+    private void ShowSettingsFragment()
+    {
+        SettingsFragment fragment= new SettingsFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.activity, fragment);
+        fragmentTransaction.commit();
     }
 }

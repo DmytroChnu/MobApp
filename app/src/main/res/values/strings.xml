@@ -2,22 +2,28 @@
     <string name="app_name">MobApp</string>
     <string name="my_mobile_app">My mobile app</string>
     <string name="developer_textView">This app was developed by Dmytro Drebot</string>
-    <string name="start_button">Start</string>
+
     <string name="privacy_policy_button">Privacy policy</string>
     <string name="privacy_policy_checkbox">Agree</string>
+
     <string name="terms_of_service_button">Terms of service</string>
     <string name="terms_of_service_checkbox">Agree</string>
-    <string name="back_button">Back</string>
-    <string name="the_fact_view">The fact:</string>
-    <string name="fact_text_view">The fact will be displayed here</string>
-    <string name="true_button">True</string>
-    <string name="false_button">False</string>
-    <string name="about_button">"?"</string>
-    <string name="about_textview">About this game</string>
-    <string name="quit_button">Quit app</string>
+
     <string name="souds_checkbox">Enable</string>
     <string name="souds_textview">Sounds</string>
-    <string name="vibro_checkbox">Enble</string>
+
     <string name="vibro_textview">Vibrations</string>
+    <string name="vibro_checkbox">Enble</string>
+
     <string name="terms_of_use_button">Terms of use</string>
+
+    <string name="vibrate_1">1</string>
+    <string name="vibrate_2">2</string>
+    <string name="vibrate_3">3</string>
+    <string name="vibrate_4">4</string>
+    <string name="vibrate_text">Vibrate Me</string>
+    <string name="info_button">Info</string>
+    <string name="settings_button">Settings</string>
+    <string name="back_button">Back</string>
+    <string name="back_button2">Back</string>
 </resources>
