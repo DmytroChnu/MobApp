@@ -9,12 +9,6 @@
     <string name="terms_of_service_button">Terms of service</string>
     <string name="terms_of_service_checkbox">Agree</string>
 
-    <string name="souds_checkbox">Enable</string>
-    <string name="souds_textview">Sounds</string>
-
-    <string name="vibro_textview">Vibrations</string>
-    <string name="vibro_checkbox">Enble</string>
-
     <string name="terms_of_use_button">Terms of use</string>
 
     <string name="vibrate_1">1</string>

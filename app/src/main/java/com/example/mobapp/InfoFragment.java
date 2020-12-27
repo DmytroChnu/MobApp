@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import timber.log.Timber;
+
 public class InfoFragment extends Fragment
 {
     private String mParam1;
@@ -63,16 +65,19 @@ public class InfoFragment extends Fragment
         Uri uri = Uri.parse(privacyPolicy);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
+        Timber.d("Opened privacy policy");
     }
 
     private void OpenTermsOfService() {
         Uri uri = Uri.parse(termsOfService);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
+        Timber.d("Opened terms of service");
     }
 
     private void CloseFragment()
     {
         getActivity().onBackPressed();
+        Timber.d("Closed info fragment");
     }
 }

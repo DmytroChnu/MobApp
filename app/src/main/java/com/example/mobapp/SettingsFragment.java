@@ -8,6 +8,8 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import timber.log.Timber;
+
 public class SettingsFragment extends Fragment {
 
     private Button backButton;
@@ -37,5 +39,6 @@ public class SettingsFragment extends Fragment {
     public void CloseFragment()
     {
         getActivity().onBackPressed();
+        Timber.d("Closed settings fragment");
     }
 }
