@@ -2,35 +2,35 @@ package com.example.mobapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import timber.log.Timber;
 
-public class BasicActivity extends AppCompatActivity {
-
-    Handler handler = new Handler();
-    Runnable runnable;
-    int delay = 1000; // in milliseconds
+public class BasicActivity extends AppCompatActivity
+{
+    Timer timer;
 
     private Button infoButton;
     private Button settingsButton;
     private Button shareButton;
 
-    private long startTimeInSeconds;
-    private long currentActiveTimeInSeconds = 0;
+    private static final String myKey = "myKey";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.basic_activity);
 
-        startTimeInSeconds = GetCurrentTimeInSeconds();
+        timer = new Timer();
+        timer.RegisterLifecycle(getLifecycle());
+        timer.SetStartTime();
 
         infoButton = (Button) findViewById(R.id.info_button);
         settingsButton = (Button) findViewById(R.id.settings_button);
@@ -42,20 +42,69 @@ public class BasicActivity extends AppCompatActivity {
                 ShowInfoFragment();
             }
         });
-
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ShowSettingsFragment();
             }
         });
-
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Share();
             }
         });
+
+        if(savedInstanceState != null)
+        {
+            int value = savedInstanceState.getInt(myKey);
+            Timber.d("Value " + value + " retrieved");
+        }
+        else
+        {
+            Timber.d("savedInstanceState is null");
+        }
+
+        Timber.d("onCreate");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Timber.d("onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Timber.d("onResume");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Timber.d("onDestroy");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Timber.d("onStop");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Timber.d("onPause");
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt(myKey, 42);
+        Timber.d("onSaveInstanceState called");
     }
 
     private void ShowInfoFragment()
@@ -93,39 +142,5 @@ public class BasicActivity extends AppCompatActivity {
         startActivity(shareIntent);
 
         Timber.d("Share");
-    }
-
-    @Override
-    protected void onPause() {
-        handler.removeCallbacks(runnable);
-        super.onPause();
-    }
-
-    @Override
-    protected void onResume()
-    {
-        handler.postDelayed(runnable = new Runnable() {
-            public void run() {
-                handler.postDelayed(runnable, delay);
-                Timber.d("Current focus time = " + currentActiveTimeInSeconds);
-                currentActiveTimeInSeconds++;
-            }
-        }, delay);
-
-        super.onResume();
-    }
-
-    @Override
-    public void onDestroy()
-    {
-        long currentTime = GetCurrentTimeInSeconds();
-        Timber.d("App total use time = " + Math.abs(currentTime - startTimeInSeconds));
-        Timber.d("Total focus time = " + currentActiveTimeInSeconds);
-
-        super.onDestroy();
-    }
-
-    private long GetCurrentTimeInSeconds() {
-        return System.currentTimeMillis() / 1000;
     }
 }
