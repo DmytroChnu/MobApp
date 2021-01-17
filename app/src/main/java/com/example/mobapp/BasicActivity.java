@@ -2,6 +2,8 @@ package com.example.mobapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -39,13 +41,13 @@ public class BasicActivity extends AppCompatActivity
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ShowInfoFragment();
+                ShowSettingsFragment();
             }
         });
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ShowSettingsFragment();
+                ShowInfoFragment();
             }
         });
         shareButton.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +68,32 @@ public class BasicActivity extends AppCompatActivity
         }
 
         Timber.d("onCreate");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch(id)
+        {
+            case R.id.main_menu :
+                onBackPressed();
+                return true;
+            case R.id.settings_menu:
+                ShowInfoFragment();
+                return true;
+            case R.id.info_menu:
+                ShowSettingsFragment();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

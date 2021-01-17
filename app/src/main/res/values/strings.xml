@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MobApp</string>
     <string name="my_mobile_app">My mobile app</string>
-    <string name="developer_textView">This app was developed by Dmytro Drebot</string>
+    <string name="info_textView">Цей додаток був розроблений Дмитром Дреботом, студентом 417 групи. Основная задача додатку - це вібрація в різних режимах. Основою проекту були лабораторні роботи з предмету «Мобільні Додатки»\nВерсія: 0.1</string>
 
     <string name="privacy_policy_button">Privacy policy</string>
     <string name="privacy_policy_checkbox">Agree</string>
@@ -16,9 +16,24 @@
     <string name="vibrate_3">3</string>
     <string name="vibrate_4">4</string>
     <string name="vibrate_text">Vibrate Me</string>
-    <string name="info_button">Info</string>
+    <string name="info_button">About</string>
     <string name="settings_button">Settings</string>
     <string name="back_button">Back</string>
     <string name="back_button2">Back</string>
     <string name="share_button">Share</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

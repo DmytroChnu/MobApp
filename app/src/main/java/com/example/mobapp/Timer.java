@@ -18,7 +18,8 @@ public class Timer implements LifecycleObserver
 
     int delay = 1000; // in milliseconds
 
-    public long getStartTimeInSeconds() {
+    public long getStartTimeInSeconds()
+    {
         return startTimeInSeconds;
     }
 
@@ -46,9 +47,9 @@ public class Timer implements LifecycleObserver
             {
                 handler.postDelayed(runnable, delay);
                 Timber.d("Current focus time = " + currentActiveTimeInSeconds);
-                currentActiveTimeInSeconds++;
+                currentActiveTimeInSeconds += 1;
             }
-        }, delay);
+        },delay);
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)

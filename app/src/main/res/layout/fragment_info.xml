@@ -52,12 +52,6 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/developer_textView" />
-
         <Button
             android:id="@+id/back_button"
             android:layout_width="match_parent"
